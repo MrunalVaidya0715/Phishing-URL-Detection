@@ -1,6 +1,7 @@
 #importing required libraries
 
-
+from flask import Flask, request, render_template
+import pickle
 from feature import FeatureExtraction
 
 file = open("pickle/model.pkl","rb")
