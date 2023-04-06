@@ -1,7 +1,16 @@
+import ipaddress
+import re
+import urllib.request
+from bs4 import BeautifulSoup
+import socket
+import requests
+from googlesearch import search
+import whois
+from datetime import date, datetime
+import time
+from dateutil.parser import parse as date_parse
+from urllib.parse import urlparse
 
-import subprocess
-
-subprocess.check_call(["pip", "install", "-r", "requirements.txt"])
 class FeatureExtraction:
     features = []
     def __init__(self,url):
