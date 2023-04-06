@@ -1,7 +1,10 @@
 #importing required libraries
 
-from flask import Flask, request, render_template
-import pickle
+import subprocess
+
+subprocess.check_call(["pip", "install", "-r", "requirements.txt"])
+
+
 from feature import FeatureExtraction
 
 file = open("pickle/model.pkl","rb")
