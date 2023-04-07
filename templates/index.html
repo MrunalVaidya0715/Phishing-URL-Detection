@@ -13,6 +13,7 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         
     <link href="static/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
     <title>URL detection</title>
     
 </head>
@@ -22,13 +23,13 @@
 <div class=" container">
     <div class="row">
         <div class="form col-md" id="form1">
-            <h2>PHISHING URL DETECTION</h2>
+            <h2 class=" tracking-widest">PHISHING URL DETECTION</h2>
     
             <br>
             <form action="/" method ="post">
                 <input type="text" class="form__input" name ='url' id="url" placeholder="Enter URL" required="" />
                 <label for="url" class="form__label">URL</label>
-                <button class="button" role="button" >Check here</button>
+                <button class=" " role="button" >Check here</button>
             </form>
            
     </div>

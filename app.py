@@ -16,6 +16,8 @@ file.close()
 
 app = Flask(__name__)
 
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
