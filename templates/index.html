@@ -1,53 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This website is develop for identify the safety of url.">
     <meta name="keywords" content="phishing url,phishing,cyber security,machine learning,classifier,python">
-    
+
 
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        
+
     <link href="static/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
     <title>URL detection</title>
-    
+
 </head>
 
-<body>
-    
-<div class=" container">
-    <div class="row">
-        <div class="form col-md" id="form1">
-            <h2 class=" tracking-widest">PHISHING URL DETECTION</h2>
-    
-            <br>
-            <form action="/" method ="post">
-                <input type="text" class="form__input" name ='url' id="url" placeholder="Enter URL" required="" />
-                <label for="url" class="form__label">URL</label>
-                <button class=" " role="button" >Check here</button>
-            </form>
-           
+<body class="text-white bg-gradient-to-b from-blue-800 to-[#0f0f3a] ">
+    <div
+        class="fixed border-b-[1px] border-gray-400 flex h-16 w-full  bg-[#0c0c2f] text-white  justify-center items-center ">
+        <div>
+            <p class=" tracking-wide md:text-xl">PhishFinder</p>
+        </div>
+
+
+
     </div>
-    
-    <div class="col-md" id="form2">
-        
-        <br>
-        <h6 class = "right "><a href= {{ url }} target="_blank">{{ url }}</a></h6>
-           
-        <br>
-        <h3 id="prediction"></h3>
-        <button class="button2" id="button2" role="button" onclick="window.open('{{url}}')" target="_blank" >Still want to Continue</button>
-        <button class="button1" id="button1" role="button"  onclick="window.open('{{url}}')" target="_blank">Continue</button>
-    </div> 
-</div>
-<br>
-<p>©2023 Group 14</p>
-</div>
+    <div class="flex flex-col w-full justify-between items-center  min-h-screen">
+
+        <div class="flex flex-col gap-8 justify-start items-center w-full ">
+            <div class="flex flex-col gap-4 h-screen w-full max-w-[800px] justify-center items-center px-4 md:px-8">
+                <div class="flex w-full max-w-[800px] justify-center items-center px-4 md:px-8">
+                    <h2 class=" tracking-wider text-white text-xl font-bold text-center">Welcome to our website phishing
+                        detector! To check whether a website link is legitimate or potentially phishing</h2>
+                </div>
+                <div class="flex flex-col px-4 pb-6  w-full justify-start gap-4 items-center">
+                    <div class="flex w-full  flex-col justify-between items-center" id="form1">
+
+
+
+                        <form class="w-full flex flex-col gap-4 justify-between items-center " action="/" method="post">
+                            <div class="flex w-full max-w-[400px] flex-col justify-start items-start">
+                                <input type="text" class="p-2 rounded-md text-blue-950 w-full " name='url' id="url"
+                                    placeholder="Enter URL" required="" />
+
+                            </div>
+                            <button
+                                class=" py-2 px-4 rounded-lg border-[1px] shadow-lg border-white tracking-wider bg-blue-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300 "
+                                role="button">Check here</button>
+                        </form>
+                    </div>
+                </div>
+                {% if url %}
+            <div class="flex flex-col w-full justify-start gap-4 items-center">
+
+                <div class="flex flex-col px-2 pb-6  w-full justify-start gap-4 items-center" id="form2">
+                    <div class="flex w-full max-w-[800px] justify-center items-center px-4 md:px-8">
+                        <h2 class=" tracking-widest text-white text-xl font-bold text-center">Here's our Analysis
+                        </h2>
+                    </div>
+                    <div
+                        class="mt-6 flex flex-col gap-2 py-4 rounded-lg w-full max-w-[600px] bg-blue-900 justify-between items-center p-2">
+                        <div class="flex w-full justify-center items-center text-center">
+                            <h4 class="underline underline-offset-2 text-center  "><a href={{ url }} target="_blank">{{
+                                    url }}</a></h4>
+                        </div>
+
+
+                        <h3 id="prediction"></h3>
+
+                        <button
+                            class="button2 py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-red-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300"
+                            id="button2" role="button" onclick="window.open('{{url}}')" target="_blank">Still want to
+                            Continue</button>
+                        <button
+                            class="button1 py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-green-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300"
+                            id="button1" role="button" onclick="window.open('{{url}}')"
+                            target="_blank">Continue</button>
+                    </div>
+                </div>
+                <button id="toggle-button"
+                    class="py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-blue-900 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300">Show
+                    Feature Columns</button>
+
+                <div id="toggle-div"
+                    class=" hidden max-w-[800px] px-2 mb-6  w-full flex-col gap-2 justify-center items-center">
+
+                    {% if feature_dict %}
+
+                    <div class="w-full flex overflow-x-auto justify-between items-center">
+                        {% for name, val in feature_dict.items() %}
+                        <div
+                            class=" border-[1px] border-gray-300 min-w-[250px] flex flex-col  justify-center items-center">
+                            <div class=" bg-blue-500 flex w-full p-4 justify-center items-center">
+                                <h1>{{ name }}</h1>
+                            </div>
+                            <div class="  bg-blue-400 flex w-full p-4 justify-center items-center">
+                                <h1>{{val}}</h1>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+            {% endif%}
+            </div>
+
+
+            
+
+
+        </div>
+        <div class="flex bg-slate-950 w-full py-2 items-center justify-center">
+            <p>©PhishFinder2033 Group-14</p>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -60,29 +134,42 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 
-    
+
     <script>
-        
-            let x = '{{xx}}';
-            let num = x*100;
-            if (0<=x && x<0.50){
-                num = 100-num;
-            }
-            let txtx = num.toString();
-            if(x<=1 && x>=0.50){
-                var label = "Website is "+txtx +"% safe to use...";
-                document.getElementById("prediction").innerHTML = label;
-                document.getElementById("button1").style.display="block";
-            }
-            else if (0<=x && x<0.50){
-                var label = "Website is "+txtx +"% unsafe to use..."
-                document.getElementById("prediction").innerHTML = label ;
-                document.getElementById("button2").style.display="block";
-            }
-        
+
+        let x = '{{xx}}';
+        let num = x * 100;
+        if (0 <= x && x < 0.50) {
+            num = 100 - num;
+        }
+        let txtx = num.toString();
+        if (x <= 1 && x >= 0.50) {
+            var label = "Website is " + txtx + "% safe to use...";
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button1").style.display = "block";
+        }
+        else if (0 <= x && x < 0.50) {
+            var label = "Website is " + txtx + "% unsafe to use..."
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button2").style.display = "block";
+        }
+
     </script>
-    
+
+    <script>
+        $(document).ready(function () {
+            $("#toggle-button").click(function () {
+                $("#toggle-div").toggle();
+
+                if ($("#toggle-div").is(":visible")) {
+                    $("#toggle-button").text("Hide Feature Columns");
+                } else {
+                    $("#toggle-button").text("Display Feature Columns");
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
-
