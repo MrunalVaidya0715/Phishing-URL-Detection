@@ -9,6 +9,8 @@
     <meta name="keywords" content="phishing url,phishing,cyber security,machine learning,classifier,python">
 
 
+
+
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -29,7 +31,7 @@
 
 
     </div>
-    <div class="flex flex-col w-full justify-between items-center  min-h-screen">
+    <div class="flex flex-col w-full justify-between items-center ">
 
         <div class="flex flex-col gap-8 justify-start items-center w-full ">
             <div class="flex flex-col gap-4 h-screen w-full max-w-[800px] justify-center items-center px-4 md:px-8">
@@ -55,73 +57,55 @@
                     </div>
                 </div>
                 {% if url %}
-            <div class="flex flex-col w-full justify-start gap-4 items-center">
+                <div class="flex flex-col w-full justify-start gap-4 items-center">
 
-                <div class="flex flex-col px-2 pb-6  w-full justify-start gap-4 items-center" id="form2">
-                    <div class="flex w-full max-w-[800px] justify-center items-center px-4 md:px-8">
-                        <h2 class=" tracking-widest text-white text-xl font-bold text-center">Here's our Analysis
-                        </h2>
-                    </div>
-                    <div
-                        class="mt-6 flex flex-col gap-2 py-4 rounded-lg w-full max-w-[600px] bg-blue-900 justify-between items-center p-2">
-                        <div class="flex w-full justify-center items-center text-center">
-                            <h4 class="underline underline-offset-2 text-center  "><a href={{ url }} target="_blank">{{
-                                    url }}</a></h4>
+                    <div class="flex flex-col px-2 pb-6  w-full justify-start gap-4 items-center" id="form2">
+                        <div class="flex w-full max-w-[800px] justify-center items-center px-4 md:px-8">
+                            <h2 class=" tracking-widest text-white text-xl font-bold text-center">Here's our Analysis
+                            </h2>
                         </div>
-
-
-                        <h3 id="prediction"></h3>
-
-                        <button
-                            class="button2 py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-red-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300"
-                            id="button2" role="button" onclick="window.open('{{url}}')" target="_blank">Still want to
-                            Continue</button>
-                        <button
-                            class="button1 py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-green-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300"
-                            id="button1" role="button" onclick="window.open('{{url}}')"
-                            target="_blank">Continue</button>
-                    </div>
-                </div>
-                <button id="toggle-button"
-                    class="py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-blue-900 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300">Show
-                    Feature Columns</button>
-
-                <div id="toggle-div"
-                    class=" hidden max-w-[800px] px-2 mb-6  w-full flex-col gap-2 justify-center items-center">
-
-                    {% if feature_dict %}
-
-                    <div class="w-full flex overflow-x-auto justify-between items-center">
-                        {% for name, val in feature_dict.items() %}
                         <div
-                            class=" border-[1px] border-gray-300 min-w-[250px] flex flex-col  justify-center items-center">
-                            <div class=" bg-blue-500 flex w-full p-4 justify-center items-center">
-                                <h1>{{ name }}</h1>
+                            class="mt-6 flex flex-col gap-2 py-4 rounded-lg w-full max-w-[600px] bg-blue-900 justify-between items-center p-2">
+                            <div class="flex w-full justify-center items-center text-center">
+                                <h4 class="underline underline-offset-2 text-center  "><a href={{ url }}
+                                        target="_blank">{{
+                                        url }}</a></h4>
                             </div>
-                            <div class="  bg-blue-400 flex w-full p-4 justify-center items-center">
-                                <h1>{{val}}</h1>
-                            </div>
+
+
+                            <h3 id="prediction"></h3>
+
+                            <button
+                                class="button2 py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-red-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300"
+                                id="button2" role="button" onclick="window.open('{{url}}')" target="_blank">Still want
+                                to
+                                Continue</button>
+                            <button
+                                class="button1 py-2 px-4 rounded-lg border-[1px] border-white tracking-wider bg-green-600 text-white font-bold hover:text-white hover:bg-transparent hover:border-white active:opacity-[0.3] transition-all ease-in-out duration-300"
+                                id="button1" role="button" onclick="window.open('{{url}}')"
+                                target="_blank">Continue</button>
                         </div>
-                        {% endfor %}
                     </div>
-                    {% endif %}
+
+                   
+
+                    
+
 
                 </div>
-
-
-            </div>
-            {% endif%}
+                {% endif%}
             </div>
 
 
-            
+            <div class="flex bg-slate-950 w-full py-2 items-center justify-center">
+                <p>©PhishFinder2033 Group-14</p>
+            </div>
 
 
         </div>
-        <div class="flex bg-slate-950 w-full py-2 items-center justify-center">
-            <p>©PhishFinder2033 Group-14</p>
-        </div>
+
     </div>
+
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -155,20 +139,8 @@
         }
 
     </script>
-
-    <script>
-        $(document).ready(function () {
-            $("#toggle-button").click(function () {
-                $("#toggle-div").toggle();
-
-                if ($("#toggle-div").is(":visible")) {
-                    $("#toggle-button").text("Hide Feature Columns");
-                } else {
-                    $("#toggle-button").text("Display Feature Columns");
-                }
-            });
-        });
-    </script>
+    
+    
 
 </body>
 
